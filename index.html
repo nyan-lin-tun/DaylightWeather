@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#f6f7f9" />
+    <title>Daylight Weather</title>
+    <link rel="icon" href="data:," />
+    <meta name="description" content="A little clarity for the day ahead. Live weather and a seven-day forecast." />
+    <script type="module" src="/src/main.ts"></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main-content">Skip to weather</a>
+    <div class="shell">
+      <header class="topbar">
+        <a href="./" class="brand" aria-label="Daylight home"
+          ><span class="brand-mark">✳</span>daylight<span class="brand-period"
+            >.</span
+          ></a
+        >
+        <div class="search-tools">
+          <form action="./" method="get" class="search" role="search">
+            <label class="sr-only" for="city">Search for a city</label
+            ><span aria-hidden="true">⌕</span
+            ><input
+              id="city"
+              name="q"
+              placeholder="Search for a city…"
+              value=""
+              minlength="2"
+              maxlength="100"
+              required
+              autocomplete="off"
+            /><button type="submit" aria-label="Search">↗</button>
+          </form>
+          <button id="locate" class="locate" type="button">
+            <span aria-hidden="true">⌖</span> Use my location
+          </button>
+        </div>
+      </header>
+      <p
+        id="location-status"
+        class="location-status"
+        role="status"
+        aria-live="polite"
+        aria-atomic="true"
+      ></p>
+      <main id="main-content" tabindex="-1"><section class="empty"><h1>Your day, a little clearer.</h1><p>Loading New York weather…</p></section></main>
+      <footer>
+        <p>A little clarity for the day ahead.</p>
+        <p>
+          Weather:
+          <a
+            href="https://open-meteo.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+            >Open-Meteo</a
+          >
+          ·
+          <a
+            href="https://creativecommons.org/licenses/by/4.0/"
+            target="_blank"
+            rel="noopener noreferrer"
+            >CC BY 4.0</a
+          ><br />City data: GeoNames via Open-Meteo
+        </p>
+      </footer>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,70 @@
+<section class="location-heading">
+  <div>
+    <p class="eyebrow">YOUR DAILY OUTLOOK</p>
+    <h1>{{title}}<span class="location-dot">↗</span></h1>
+    <p class="muted">{{subtitle}}</p>
+  </div>
+  <div class="date">
+    <strong>{{date}}</strong><span>Local time · {{timezone}}</span>
+  </div>
+</section>
+<div class="overview">
+  <section class="current-card" aria-label="Current weather">
+    <div class="card-top">
+      <span class="tag"><i></i> Current conditions</span><span>°C</span>
+    </div>
+    <div class="current-main">
+      <div>
+        <div class="temperature">{{temperature}}<span>°</span></div>
+        <h2>{{condition}}</h2>
+        <p>Feels like {{feelsLike}}° · H {{high}}° / L {{low}}°</p>
+      </div>
+      {{icon}}
+    </div>
+    <div class="current-bottom">
+      <span>Updated {{updated}} local time</span
+      ><span>Forecast data by Open-Meteo ↗</span>
+    </div>
+  </section>
+  <aside class="advice-card">
+    <div class="advice-title">
+      <span class="small-sun">✦</span
+      ><span class="eyebrow">A LITTLE HEADS-UP</span>
+    </div>
+    <h2>Make the most <br />of your day.</h2>
+    {{advice}}
+    <p class="advice-note">
+      Based on current temperature, wind, and today’s rain outlook.
+    </p>
+  </aside>
+</div>
+<section class="metrics" aria-label="Weather details">
+  <article>
+    <span class="metric-icon">↝</span>
+    <div>
+      <p>Wind speed</p>
+      <strong>{{wind}} <small>km/h</small></strong>
+    </div>
+  </article>
+  <article>
+    <span class="metric-icon">☂</span>
+    <div>
+      <p>Rain chance today</p>
+      <strong>{{rain}}<small>%</small></strong>
+    </div>
+  </article>
+  <article>
+    <span class="metric-icon">◒</span>
+    <div>
+      <p>Feels like</p>
+      <strong>{{feelsLike}}<small>°C</small></strong>
+    </div>
+  </article>
+</section>
+<section class="week">
+  <div class="section-heading">
+    <h2>The week ahead</h2>
+    <span>7-day forecast <span aria-hidden="true">↗</span></span>
+  </div>
+  <div class="days">{{days}}</div>
+</section>
