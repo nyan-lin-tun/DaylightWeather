@@ -2,6 +2,8 @@
 
 A standalone demo of [aws-serverless-weather](https://gitlab.com/nyan-lin-tun/aws-serverless-weather), built with TypeScript and Vite for GitHub Pages. Forecasts come directly from Open-Meteo, and weather advice is generated in the browser. No AWS setup is required.
 
+**Live demo:** [nyanlintun.me/DaylightWeather](http://nyanlintun.me/DaylightWeather/)
+
 Starts in New York. Supports city search, device location, and a seven-day forecast. Temperatures are in °C; wind speed is in km/h.
 
 ## Development
