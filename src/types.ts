@@ -23,6 +23,7 @@ export interface DailyWeather {
 }
 
 export interface Forecast {
+  adviceUnavailable?: boolean;
   timezone: string;
   current: CurrentWeather;
   daily: [DailyWeather, ...DailyWeather[]];
@@ -37,4 +38,3 @@ export interface PageModel {
   locations: Location[] | null;
   error: string | null;
 }
-

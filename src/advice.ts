@@ -1,13 +1,42 @@
-import type { Forecast } from './types';
-/** Pure, ordered rules. Values remain in Celsius and km/h throughout the app. */
-export function advice(forecast: Forecast): string[] {
-  const { temperatureC: temperature, windSpeedKmh: wind, weatherCode: code } = forecast.current;
+import type { Forecast } from "./types";
+
+/** Port of weather-advice/src/weather/Advice.java, including strict boundaries. */
+export function advice(forecast: Forecast): string[] | null {
+  const { temperatureC: temperature, windSpeedKmh: wind } = forecast.current;
   const rain = forecast.daily[0].rainProbabilityPercent;
+  if (
+    temperature === null ||
+    wind === null ||
+    rain === null ||
+    !Number.isFinite(temperature) ||
+    !Number.isFinite(wind) ||
+    !Number.isFinite(rain) ||
+    temperature < -100 ||
+    temperature > 70 ||
+    wind < 0 ||
+    wind > 500 ||
+    rain < 0 ||
+    rain > 100
+  )
+    return null;
+
   const tips: string[] = [];
-  if (code !== null && [95, 96, 99].includes(code)) tips.push('Thunderstorms are possible. Plan indoor alternatives.');
-  if (temperature !== null) tips.push(temperature <= 5 ? 'Wrap up warm; a coat and layers will help.' : temperature >= 28 ? 'Keep water handy and take breaks in the shade.' : 'Light layers will help you adjust through the day.');
-  if (rain !== null && rain >= 40) tips.push('Bring an umbrella or a waterproof layer.');
-  if (wind !== null && wind >= 30) tips.push('Expect a breeze; choose a wind-resistant outer layer.');
-  if (!tips.length) tips.push('Some weather details are unavailable. Check local conditions before heading out.');
+  if (temperature < 0) tips.push("Wrap up with a warm coat, hat, and gloves.");
+  else if (temperature < 10) tips.push("Wear a warm jacket.");
+  else if (temperature < 18)
+    tips.push("Bring a light layer for cooler moments.");
+  else if (temperature >= 28)
+    tips.push("Carry water and take breaks in the shade.");
+
+  const strongWind = wind > 40;
+  if (strongWind) tips.push("Expect strong winds; choose a sheltered route.");
+  if (rain > 60)
+    tips.push(
+      strongWind
+        ? "Bring a waterproof jacket rather than an umbrella."
+        : "Bring an umbrella or waterproof jacket.",
+    );
+  if (!tips.length)
+    tips.push("Comfortable conditions for spending time outside.");
   return tips;
 }
