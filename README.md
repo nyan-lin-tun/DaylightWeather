@@ -30,27 +30,11 @@ The [Pages workflow](.github/workflows/pages.yml) runs lint, tests, and the buil
 
 Assets and navigation use relative paths, so the build works under a repository path or a custom domain.
 
-## Source
+## About the demo
 
-| File | Responsibility |
-| --- | --- |
-| `src/api.ts` | Open-Meteo requests, response validation, default location |
-| `src/advice.ts` | Weather advice rules |
-| `src/main.ts` | Search, navigation, geolocation, request cancellation |
-| `src/types.ts` | Shared data types |
-| `src/view.ts`, `src/templates/` | HTML rendering and escaping |
-| `src/style.css` | Layout and styling |
-| `tests/weather.test.ts` | API, advice, and rendering tests |
+This version ports the original app’s city search, forecasts, validation, and clothing/rain advice to TypeScript. The UI uses the same templates and styling. See [implementation notes](docs/implementation.md) for the comparison and test coverage.
 
-The design is adapted from the original repository’s `weather-page` app.
-
-Advice thresholds live in `src/advice.ts`: cold at ≤5°C, heat at ≥28°C, rain probability at ≥40%, and wind at ≥30 km/h. Storm advice takes priority. These rules do not include official weather alerts.
-
-Requests time out after 15 seconds. New navigation cancels the previous request; a request revision also prevents late responses or location callbacks from replacing newer results. Missing measurements display as a dash.
-
-Device location requires permission and HTTPS or localhost. Selected coordinates appear in the URL and are sent to Open-Meteo.
-
-Before a release, check city search, back/forward navigation, denied location access, network errors, keyboard navigation, and the mobile layout. Automated tests do not call the live API.
+Hosting uses GitHub Pages; requests go directly to Open-Meteo. A public repository can use GitHub Pages on GitHub Free. Open-Meteo’s free API allows non-commercial use within its [usage limits](https://open-meteo.com/en/pricing).
 
 ## Data and license
 
