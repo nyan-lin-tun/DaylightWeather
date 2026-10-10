@@ -17,6 +17,7 @@ Other commands:
 
 | Command | Purpose |
 | --- | --- |
+| `npm run lint` | Check JavaScript and TypeScript with ESLint |
 | `npm test` | Run tests with mocked API responses |
 | `npm run build` | Typecheck and build to `dist/` |
 | `npm run preview` | Serve the production build locally |
@@ -25,7 +26,7 @@ Other commands:
 
 In the GitHub repository, set **Settings → Pages → Build and deployment → Source** to **GitHub Actions**, then push to `main`.
 
-The [Pages workflow](.github/workflows/pages.yml) runs tests and builds the app before deploying. Pull requests run the same checks without deploying. For another default branch, update the branch references in the workflow.
+The [Pages workflow](.github/workflows/pages.yml) runs lint, tests, and the build before deploying. Pull requests run the same checks without deploying. For another default branch, update the branch references in the workflow.
 
 Assets and navigation use relative paths, so the build works under a repository path or a custom domain.
 
